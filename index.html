@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1</title>
+</head>
+
+<body>
+    <button onclick="convertDegrees()">Конвертация градусов цельсия в фаренгейты</button>
+    <button onclick="task2()">Task2</button>
+    <script>
+        function convertDegrees() {
+            let celsius = prompt("Укажите температуру в градусах цельсия . \n Температура должна быть в числах");
+            if (celsius === null) {
+                console.log("User cancel ");
+                return;
+            }
+            if (isNaN(celsius)) {
+                alert("НЕ верный формат ");
+                convertDegrees();
+                return;
+            }
+            let fahrenheit = (9 / 5) * celsius + 32;
+            alert(celsius + "C = " + fahrenheit + "F");
+        }
+
+        function task2() {
+            let admin;
+            let name = "Василий";
+            admin = name;
+            console.log(admin);
+            alert(admin);
+        }
+    </script>
+</body>
+
+</html>
