@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 600;
+}
+.center {
+  padding-left: calc((100vw - 960px) / 2);
+  padding-right: calc((100vw - 960px) / 2);
+}
+.game {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #78909c;
+}
+.game-heading {
+  color: green;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 3rem;
+}
+.game-score {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-size: 2rem;
+  padding: 0 0 100px 0;
+}
+#notice {
+  -webkit-animation: blink1 3s linear infinite;
+  animation: blink1 3s linear infinite;
+}
+@-webkit-keyframes blink1 {
+  0% {
+    color: #e91e63;
+  }
+  50% {
+    color: #e91e6300;
+  }
+  100% {
+    color: #e91e63;
+  }
+}
+@keyframes blink1 {
+  0% {
+    color: #e91e63;
+  }
+  50% {
+    color: #e91e6300;
+  }
+  100% {
+    color: #e91e63;
+  }
+}
+.game-score__notice {
+  min-height: 60px;
+  flex-basis: 100%;
+  margin: 35px 0;
+  text-align: center;
+  line-height: 70px;
+}
+.game-score__human {
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 46%;
+  font-size: 5rem;
+}
+.game-score__colon {
+  font-size: 4rem;
+}
+.game-score__computer {
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 46%;
+  font-size: 5rem;
+}
+.game-board {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 0;
+  color: #9c27b0;
+}
+.game-board__item {
+  font-size: 6rem;
+  position: relative;
+}
+
+.game-board__item label:hover {
+  cursor: pointer;
+  color: #ff5722;
+}
+
+.game-board__item label:hover::after {
+  content: attr(data-label);
+  position: absolute;
+  font-size: 2rem;
+  top: -3rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
