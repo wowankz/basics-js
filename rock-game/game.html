@@ -16,7 +16,7 @@
     <div class="game center">
         <h1 class="game-heading">Rock Game</h1>
         <div class="game-score">
-            <div id="notice" class="game-score__notice"></div>
+            <div id="notice" class="game-score__notice">Make your choice</div>
             <div id="human" class="game-score__human">
                 <i class="fas fa-user-tie"></i>
                 <output id="human-score" class="game-score__human-score">0</output>
@@ -59,9 +59,17 @@
         const computer = document.getElementById('computer');
         const humanScore = document.getElementById('human-score');
         const computerScore = document.getElementById('computer-score');
+        const audioWinner = new Audio('winner-voice.mp3');
+        const audioLoser = new Audio('game_over.mp3');
+
         function game(me) {
             let comp = Math.floor(Math.random() * 3);
             let result = check(me, comp);
+            renderer(result);
+            console.log(result);
+        }
+
+        function renderer(result) {
             if (+humanScore.value > +computerScore.value) {
                 human.style.color = '#4CAF50';
                 computer.style.color = '#EF5350';
@@ -75,7 +83,6 @@
                 computer.style.color = '#78909c';
             }
             noticeEl.innerHTML = result;
-            console.log(result);
         }
 
         function check(a, b) {
@@ -84,15 +91,20 @@
             if ((a === 0 && b === 1) || (a === 1 && b === 2) || (a === 2 && b === 0)) {
                 winner = 'Human Won';
                 humanScore.value = ++humanScore.value;
+                audioWinner.play();
             } else if (a === b) {
                 winner = 'Drawn game';
             } else {
                 winner = 'Computer Won';
                 computerScore.value = ++computerScore.value;
+                audioLoser.play();
             }
 
             return `Round was ${winner}.<br> Human : ${arrItems[a]} / Computer : ${arrItems[b]}`;
         }
+
+
+
     </script>
 </body>
 
