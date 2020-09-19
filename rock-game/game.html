@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/bad01150ed.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -14,27 +14,37 @@
 <body>
 
     <div class="game center">
+        <label class="sound-icon">
+            <input type="checkbox" name="sound" id="sound-fon" onchange="toggleFonSound()" hidden checked>
+            <i class="fas fa-volume-mute"></i>
+        </label>
+
         <h1 class="game-heading">Rock Game</h1>
+
         <div class="game-score">
             <div id="notice" class="game-score__notice">Make your choice</div>
+
             <div id="human" class="game-score__human">
                 <i class="fas fa-user-tie"></i>
                 <output id="human-score" class="game-score__human-score">0</output>
             </div>
+
             <div class="game-score__colon">:</div>
+
             <div id="computer" class="game-score__computer">
                 <output id="computer-score" class="game-score__computer-score">0</output>
                 <i class="fas fa-laptop-code"></i>
             </div>
         </div>
-        <form name="board" action="#" class="game-board" oninput="game(+item.value),board.reset()">
 
+        <form name="board" action="#" class="game-board" oninput="game(+item.value),board.reset()">
             <div class="game-board__item">
                 <label data-label="Rock">
                     <i class="fab fa-atlassian"></i>
                     <input type="radio" name="item" hidden value="0">
                 </label>
             </div>
+
             <div class="game-board__item">
                 <label data-label="Scissors">
                     <i class="fas fa-cut"></i>
@@ -47,9 +57,9 @@
                     <i class="far fa-sticky-note"></i>
                     <input type="radio" name="item" hidden value="2">
                 </label>
-
             </div>
         </form>
+        <a href="game.html" class="button-new">New Game</a>
     </div>
 
     <script>
@@ -59,8 +69,19 @@
         const computer = document.getElementById('computer');
         const humanScore = document.getElementById('human-score');
         const computerScore = document.getElementById('computer-score');
-        const audioWinner = new Audio('winner-voice.mp3');
-        const audioLoser = new Audio('game_over.mp3');
+        const isSound = document.getElementById('sound-fon');
+        const audioDrawn = new Audio('https://raw.githubusercontent.com/wowankz/static/master/rock_game/sounds/drawn-game.mp3');
+        const audioWinner = new Audio('https://raw.githubusercontent.com/wowankz/static/master/rock_game/sounds/winner-voice.mp3');
+        const audioLoser = new Audio('https://raw.githubusercontent.com/wowankz/static/master/rock_game/sounds/game_over.mp3');
+        const audioFon = new Audio('https://raw.githubusercontent.com/wowankz/static/master/rock_game/sounds/fon-audio.mp3');
+        audioFon.loop = true;
+        audioFon.volume = 0.3;
+        audioFon.play()
+
+        function toggleFonSound() {
+            console.log('toggleSound')
+            isSound.checked ? audioFon.play() : audioFon.pause();
+        }
 
         function game(me) {
             let comp = Math.floor(Math.random() * 3);
@@ -79,8 +100,8 @@
                 computer.style.color = '#4CAF50';
             }
             if (+humanScore.value === +computerScore.value) {
-                human.style.color = '#78909c';
-                computer.style.color = '#78909c';
+                human.style.color = '#4caf50';
+                computer.style.color = '#4caf50';
             }
             noticeEl.innerHTML = result;
         }
@@ -91,13 +112,14 @@
             if ((a === 0 && b === 1) || (a === 1 && b === 2) || (a === 2 && b === 0)) {
                 winner = 'Human Won';
                 humanScore.value = ++humanScore.value;
-                audioWinner.play();
+                isSound.checked ? audioWinner.play() : () => { };
             } else if (a === b) {
                 winner = 'Drawn game';
+                isSound.checked ? audioDrawn.play() : () => { };
             } else {
                 winner = 'Computer Won';
                 computerScore.value = ++computerScore.value;
-                audioLoser.play();
+                isSound.checked ? audioLoser.play() : () => { };
             }
 
             return `Round was ${winner}.<br> Human : ${arrItems[a]} / Computer : ${arrItems[b]}`;
