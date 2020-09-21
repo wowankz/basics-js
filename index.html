@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3</title>
+</head>
+
+<body>
+    <button onclick="findSimpleNumbers(100)">Простые числа в промежутке от 0 до 100</button>
+    <button onclick="task3()">Числа от 0 до 9, не используя тело цикла for</button>
+    <button onclick="drawPyramid(20)">Нарисовать пирамиду с помощью console.log в 20 рядов</button>
+    <hr>
+    <div class="game">
+
+    </div>
+    <script>
+        function findSimpleNumbers(num) {
+            console.group(`простые числа в промежутке от 0 до ${num}`);
+            let i = 2;
+            while (num >= i) {
+                isSimpleNumber(i) ? console.log(i) : '';
+                i++;
+            }
+            console.groupEnd();
+        }
+
+        function isSimpleNumber(num) {
+            let end = Math.ceil(Math.sqrt(num));
+            for (let i = 2; i <= end; i++) {
+                if (num % i === 0 && num !== 2)
+                    return false;
+            }
+            return true
+        }
+
+        function task3() {
+            console.group('Вывод чисел от 0 до 9, не используя тело цикла for');
+            for (let i = 0; i < 10; console.log(i), i++) { }
+            console.groupEnd();
+        }
+
+        function drawPyramid(rows) {
+            console.group('пирамида из 20 рядов');
+            let sym = 'x';
+            while (rows) {
+                console.log(sym);
+                sym = sym + 'x';
+                rows--;
+            }
+            console.groupEnd();
+        }
+
+        function generateRandomNumber() {
+            let result = [];
+            while (result.length < 4) {
+                let randomNum = Math.floor(Math.random() * 10);
+                result.includes(randomNum) ? '' : result.push(randomNum);
+            }
+            return result;
+        }
+
+        function checkUserAnswer(answer, hiddenNumber) {
+            let cows = 0;
+            let bulls = 0;
+            let userNumbers = [...answer]; console.log(userNumbers)
+            userNumbers.forEach((number) => {
+                if (hiddenNumber.includes(+number)) {
+                    userNumbers.indexOf(number) === hiddenNumber.indexOf(+number) ? bulls++ : cows++;
+                }
+            })
+            alert(`Cows = ${cows} \nBulls = ${bulls}`);
+        }
+
+        function bullsCowsGame() {
+            let num = generateRandomNumber();
+            let step = 10;
+            while (step) {
+                let answer = +prompt('Your number.');
+                checkUserAnswer(answer, num);
+                step--;
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
