@@ -5,6 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 3</title>
+    <style>
+        .game {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10vh;
+        }
+
+        .game-board {
+            display: flex;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 15px;
+            width: 585px;
+            height: 331px;
+            align-items: flex-start;
+            background-color: darkgrey;
+        }
+
+        .game-board>div {
+            text-align: center;
+            align-self: center;
+        }
+
+        #consOutput {
+            width: 395px;
+            height: 300px;
+            border: 1px solid #eee;
+            margin-left: 10px;
+            color: white;
+            background: #212121b8;
+            padding: 15px;
+            overflow: auto;
+        }
+
+        #userNumber {
+            border: 1px solid #212121;
+            padding: 2px;
+            margin-right: 5px;
+        }
+
+        #userNumber:focus {
+            outline: none;
+            border: 1px solid tomato;
+        }
+
+        button[type='reset'] {
+            margin-top: 10px;
+            width: 150px;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,12 +65,27 @@
     <button onclick="drawPyramid(20)">Нарисовать пирамиду с помощью console.log в 20 рядов</button>
     <hr>
     <div class="game">
+        <h1>Bulls and Cows</h1>
 
+        <form class="game-board" action="#"
+            onsubmit="checkUserAnswer(userNumber, hiddenNumber, consOutput);  return false">
+            <div>
+                <label>
+                    <p>Your number</p>
+                    <input type="number" id="userNumber" min="0" max="9999">
+                </label>
+                <button type="submit">CHECK</button>
+                <button type="reset" onclick="initNewGame(consOutput)">New Game</button>
+            </div>
+
+            <output id="consOutput">------------------- New Game ------------------- <br></output>
+        </form>
     </div>
     <script>
+
         function findSimpleNumbers(num) {
             console.group(`простые числа в промежутке от 0 до ${num}`);
-            let i = 2;
+            let i = 2
             while (num >= i) {
                 isSimpleNumber(i) ? console.log(i) : '';
                 i++;
@@ -52,6 +119,44 @@
             console.groupEnd();
         }
 
+        // ------------- game -----------------
+
+        var hiddenNumber = null;
+        var step = 10;
+        function initNewGame(consOutput) {
+            hiddenNumber = generateRandomNumber();
+            step = 10;
+            consOutput ? consOutput.innerHTML = '-------------------   New Game   ------------------- <br>' : '';
+        }
+
+        function checkUserAnswer(answer, hiddenNumber, log) {
+            if (!step) return;
+            let cows = 0;
+            let bulls = 0;
+            let userNumbers = [...new Set(answer.value)];
+            if (userNumbers.length === 4) {
+                userNumbers.forEach((number, index) => {
+                    if (hiddenNumber.includes(+number)) {
+                        index === hiddenNumber.indexOf(+number) ? bulls++ : cows++;
+                    }
+                })
+                if (--step) {
+                    log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - step}.  Cows = ${cows} Bulls = ${bulls}<br>`;
+                    bulls === 4 ? step = 0 : '';
+                } else {
+                    log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - step}. Cows = ${cows} Bulls = ${bulls} <br> Game Over <br>`;
+                }
+
+                answer.value = '';
+                answer.focus();
+                return;
+            }
+
+            log.innerHTML += '=> <mark>The number must be four digits with non repeating digits</mark> <br>';
+            answer.value = '';
+            answer.focus();
+        }
+
         function generateRandomNumber() {
             let result = [];
             while (result.length < 4) {
@@ -61,32 +166,10 @@
             return result;
         }
 
-        function checkUserAnswer(answer, hiddenNumber) {
-            let cows = 0;
-            let bulls = 0;
-            let userNumbers = [...answer]; console.log(userNumbers)
-            userNumbers.forEach((number) => {
-                if (hiddenNumber.includes(+number)) {
-                    userNumbers.indexOf(number) === hiddenNumber.indexOf(+number) ? bulls++ : cows++;
-                }
-            })
-            alert(`Cows = ${cows} \nBulls = ${bulls}`);
-        }
 
-        function bullsCowsGame() {
-            let num = generateRandomNumber();
-            let step = 10;
-            while (step) {
-                let answer = +prompt('Your number.');
-                checkUserAnswer(answer, num);
-                step--;
-            }
-        }
+        initNewGame();
 
-
-
-
-
+        // -------------- game end -------------------
     </script>
 </body>
 
