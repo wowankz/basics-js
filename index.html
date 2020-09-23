@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 3</title>
     <style>
+        h1 {
+            color: #607D8B;
+            font-size: 2rem;
+        }
+
         .game {
             display: flex;
             flex-direction: column;
@@ -30,10 +35,16 @@
             align-self: center;
         }
 
+        .game-board>div p {
+            color: #FFEB3B;
+            font-size: 1.2rem;
+        }
+
         #consOutput {
-            width: 395px;
+            width: 430px;
             height: 300px;
             border: 1px solid #eee;
+            border-radius: 5px;
             margin-left: 10px;
             color: white;
             background: #212121b8;
@@ -141,10 +152,10 @@
                     }
                 })
                 if (--step) {
-                    log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - step}.  Cows = ${cows} Bulls = ${bulls}<br>`;
+                    log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - step}. Your number [ ${answer.value} ]  Cows = ${cows} Bulls = ${bulls}<br>`;
                     bulls === 4 ? step = 0 : '';
                 } else {
-                    log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - step}. Cows = ${cows} Bulls = ${bulls} <br> Game Over <br>`;
+                    log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - step}. Your number [ ${answer.value} ] Cows = ${cows} Bulls = ${bulls} <br> Game Over <br>`;
                 }
 
                 answer.value = '';
