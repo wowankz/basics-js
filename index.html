@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4</title>
+</head>
+<style>
+    button {
+        padding: 0;
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+        padding: 5px 15px;
+    }
+</style>
+
+<body>
+    <button onclick="convertNumberToObject(+prompt('Введите число от 0 до 999'))">Функция преобразующая число в
+        объект</button>
+    <button onclick="console.log(createArrayProductObject(NAME_PRODUCTS, PRICE_PRODUCTS))">Создать массив объектов
+        продукт</button>
+
+    <button><a href="BollsAndCows.html">BollsAndCows</a></button>
+
+    <script>
+
+        // Task 1
+        function convertNumberToObject(number) {
+            console.log(`The number is ${number}`);
+            if (number > 999) {
+                console.log(`The number ${number} is more then 999`);
+                return {};
+            } else if (number < 0) {
+                number = -number;
+            }
+            let result = { units: number % 10, tens: Math.floor(number / 10) % 10, hundreds: Math.floor(number / 100) % 10 };
+            console.log(result)
+            return result;
+        }
+
+        // Creating an array of product objects
+
+        const NAME_PRODUCTS = [
+            'MANGO PEOPLE T-SHIRT',
+            'BANANA PEOPLE T-SHIRT',
+            'STRAWBERRY PEOPLE T-SHIRT',
+            'ORANGE PEOPLE T-SHIRT',
+            'PUMPKIN PEOPLE T-SHIRT',
+            'PINEAPPLE PEOPLE T-SHIRT',
+            'CUCUMBER PEOPLE T-SHIRT',
+            'TOMATO PEOPLE T-SHIRT'
+        ];
+        const PRICE_PRODUCTS = [
+            52.00,
+            53.00,
+            55.00,
+            67.00,
+            69.00,
+            94.00,
+            23.00,
+            45.00
+        ];
+
+        function createArrayProductObject(names, prices) {
+            return names.map((name, index) => { return { name: names[index], price: prices[index] } })
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BollsAndCows</title>
+    <style>
+        h1 {
+            color: #607D8B;
+            font-size: 2rem;
+        }
+
+        .game {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10vh;
+
+        }
+
+        .game-board {
+            display: flex;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 15px;
+            width: 650px;
+            height: 331px;
+            align-items: flex-start;
+            background-color: darkgrey;
+            background-image: url(bolls_cows.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .game-board>div {
+            text-align: center;
+            align-self: center;
+        }
+
+        .game-board>div p {
+            color: #FFEB3B;
+            font-size: 1.2rem;
+        }
+
+        #gameConsole {
+            width: 430px;
+            height: 300px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            margin-left: 10px;
+            color: white;
+            background: #212121b8;
+            padding: 15px;
+            overflow: auto;
+        }
+
+        .game-heading {
+            text-align: center;
+        }
+
+        #userNumber {
+            border: 1px solid #212121;
+            padding: 2px;
+            margin-right: 5px;
+        }
+
+        #userNumber:focus {
+            outline: none;
+            border: 1px solid tomato;
+        }
+
+        button[type='reset'] {
+            margin-top: 10px;
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game">
+        <h1>Bulls and Cows</h1>
+
+        <form class="game-board" action="#" onsubmit="Game.checkUserAnswer(userNumber, gameConsole);  return false">
+            <div>
+                <label>
+                    <p>Your number</p>
+                    <input type="number" id="userNumber" min="0" max="9999">
+                </label>
+                <button type="submit">CHECK</button>
+                <button type="reset" onclick="Game.initNewGame(gameConsole)">New Game</button>
+            </div>
+
+            <output id="gameConsole">
+                <p class="game-heading">------------------- New Game -------------------</p>
+            </output>
+        </form>
+    </div>
+    <script>
+        // ------------- game -----------------
+
+        function createGame() {
+            return {
+                hiddenNumber: null,
+                step: null,
+
+                initNewGame(gameConsole) {
+                    console.log(this);
+                    this.generateRandomNumber();
+                    this.step = 10
+                    gameConsole ? gameConsole.innerHTML = '<p class="game-heading"> -------------------   New Game   ------------------- </p>' : '';
+                },
+
+                generateRandomNumber() {
+                    let result = [];
+                    while (result.length < 4) {
+                        let randomNum = Math.floor(Math.random() * 10);
+                        result.includes(randomNum) ? '' : result.push(randomNum);
+                    }
+                    this.hiddenNumber = result;
+                },
+
+                checkUserAnswer(answer, log) {
+                    if (!this.step) return;
+                    let cows = 0;
+                    let bulls = 0;
+                    let userNumbers = [...new Set(answer.value)];
+                    if (userNumbers.length === 4) {
+                        userNumbers.forEach((number, index) => {
+                            if (this.hiddenNumber.includes(+number)) {
+                                index === this.hiddenNumber.indexOf(+number) ? bulls++ : cows++;
+                            }
+                        })
+                        if (--this.step) {
+                            log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - this.step}. Your number [ ${answer.value} ]  Cows = ${cows} Bulls = ${bulls}<br>`;
+                            bulls === 4 ? this.step = 0 : '';
+                        } else {
+                            log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - this.step}. Your number [ ${answer.value} ] Cows = ${cows} Bulls = ${bulls} <br> Game Over <br>`;
+                        }
+
+                        answer.value = '';
+                        answer.focus();
+                        return;
+                    }
+
+                    log.innerHTML += '=> <mark>The number must be four digits with non repeating digits</mark> <br>';
+                    answer.value = '';
+                    answer.focus();
+                }
+
+            }
+        }
+
+        const Game = createGame();
+
+        Game.initNewGame();
+
+         // -------------- game end -------------------
+    </script>
+</body>
+
+</html>
