@@ -37,6 +37,7 @@
         .game-board>div {
             text-align: center;
             align-self: center;
+            flex-basis: 38%;
         }
 
         .game-board>div p {
@@ -49,7 +50,7 @@
             height: 300px;
             border: 1px solid #eee;
             border-radius: 5px;
-            margin-left: 10px;
+            /* margin-left: 10px; */
             color: white;
             background: #212121b8;
             padding: 15px;
@@ -64,6 +65,7 @@
             border: 1px solid #212121;
             padding: 2px;
             margin-right: 5px;
+            width: 75px;
         }
 
         #userNumber:focus {
@@ -89,7 +91,7 @@
                     <input type="number" id="userNumber" min="0" max="9999">
                 </label>
                 <button type="submit">CHECK</button>
-                <button type="reset" onclick="Game.initNewGame(gameConsole)">New Game</button>
+                <button type="reset" onclick="Game.initNewGame(gameConsole);return false">New Game</button>
             </div>
 
             <output id="gameConsole">

@@ -30,6 +30,10 @@
 
         // Task 1
         function convertNumberToObject(number) {
+            if (isNaN(number)) {
+                console.log(`${number} is not a number`);
+                return {};
+            }
             console.log(`The number is ${number}`);
             if (number > 999) {
                 console.log(`The number ${number} is more then 999`);
@@ -55,14 +59,14 @@
             'TOMATO PEOPLE T-SHIRT'
         ];
         const PRICE_PRODUCTS = [
-            52.00,
-            53.00,
-            55.00,
-            67.00,
-            69.00,
-            94.00,
-            23.00,
-            45.00
+            '52.00',
+            '53.00',
+            '55.00',
+            '67.00',
+            '69.00',
+            '94.00',
+            '23.00',
+            '45.00'
         ];
 
         function createArrayProductObject(names, prices) {
