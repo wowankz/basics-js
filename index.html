@@ -21,7 +21,7 @@
 <body>
     <button onclick="convertNumberToObject(prompt('Введите число от 0 до 999'))">Функция преобразующая число в
         объект</button>
-    <button onclick="console.log(createArrayProductObject(NAME_PRODUCTS, PRICE_PRODUCTS))">Создать массив объектов
+    <button onclick="console.log(Products.getProducts())">Создать массив объектов
         продукт</button>
 
     <button><a href="BollsAndCows.html">BollsAndCows</a></button>
@@ -34,38 +34,21 @@
                 number > 999 ? (console.log(`The number ${number} is more then 999`), {}) :
                     number < 0 ? { 'units': -number % 10, 'tens': Math.floor(-number / 10) % 10, 'hundreds': Math.floor(-number / 100) % 10 } :
                         { 'units': number % 10, 'tens': Math.floor(number / 10) % 10, 'hundreds': Math.floor(number / 100) % 10 };
-            console.log(`Number is : %s \nObject from number : %o`, number, result)
+            console.log(`Number is : %s \nObject from number : %o`, number, result);
             return result;
         }
 
         // Creating an array of product objects
+        const Products = {
+            NAMES: ['MANGO PEOPLE T-SHIRT', 'BANANA PEOPLE T-SHIRT', 'STRAWBERRY PEOPLE T-SHIRT', 'ORANGE PEOPLE T-SHIRT',
+                'PUMPKIN PEOPLE T-SHIRT', 'PINEAPPLE PEOPLE T-SHIRT', 'CUCUMBER PEOPLE T-SHIRT', 'TOMATO PEOPLE T-SHIRT'],
 
-        const NAME_PRODUCTS = [
-            'MANGO PEOPLE T-SHIRT',
-            'BANANA PEOPLE T-SHIRT',
-            'STRAWBERRY PEOPLE T-SHIRT',
-            'ORANGE PEOPLE T-SHIRT',
-            'PUMPKIN PEOPLE T-SHIRT',
-            'PINEAPPLE PEOPLE T-SHIRT',
-            'CUCUMBER PEOPLE T-SHIRT',
-            'TOMATO PEOPLE T-SHIRT'
-        ];
+            PRICES: ['52.00', '53.00', '55.00', '67.00', '69.00', '94.00', '23.00', '45.00'],
 
-        const PRICE_PRODUCTS = [
-            '52.00',
-            '53.00',
-            '55.00',
-            '67.00',
-            '69.00',
-            '94.00',
-            '23.00',
-            '45.00'
-        ];
-
-        function createArrayProductObject(names, prices) {
-            return names.map((name, index) => { return { name: names[index], price: prices[index] } })
+            getProducts() {
+                return this.NAMES.map((name, index) => { return { name: this.NAMES[index], price: this.PRICES[index] } });
+            }
         }
-
 
     </script>
 </body>
