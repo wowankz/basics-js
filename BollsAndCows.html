@@ -108,7 +108,6 @@
                 step: null,
 
                 initNewGame(gameConsole) {
-                    console.log(this);
                     this.generateRandomNumber();
                     this.step = 10
                     gameConsole ? gameConsole.innerHTML = '<p class="game-heading"> -------------------   New Game   ------------------- </p>' : '';
@@ -135,10 +134,10 @@
                             }
                         })
                         if (--this.step) {
-                            log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - this.step}. Your number [ ${answer.value} ]  Cows = ${cows} Bulls = ${bulls}<br>`;
+                            log.innerHTML += bulls === 4 ? '>>>  You are winner!!!' : `>>> ${10 - this.step}. Your number [ ${answer.value} ]  Cows = ${cows} Bulls = ${bulls}<br>`;
                             bulls === 4 ? this.step = 0 : '';
                         } else {
-                            log.innerHTML += bulls === 4 ? '=>  You are winner!!!' : `=> ${10 - this.step}. Your number [ ${answer.value} ] Cows = ${cows} Bulls = ${bulls} <br> Game Over <br>`;
+                            log.innerHTML += bulls === 4 ? '>>>  You are winner!!!' : `>>> ${10 - this.step}. Your number [ ${answer.value} ] Cows = ${cows} Bulls = ${bulls} <br> Game Over <br>`;
                         }
 
                         answer.value = '';
@@ -146,7 +145,7 @@
                         return;
                     }
 
-                    log.innerHTML += '=> <mark>The number must be four digits with non repeating digits</mark> <br>';
+                    log.innerHTML += '>>> <mark>The number must be four digits with non repeating digits</mark> <br>';
                     answer.value = '';
                     answer.focus();
                 }

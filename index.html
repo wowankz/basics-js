@@ -19,7 +19,7 @@
 </style>
 
 <body>
-    <button onclick="convertNumberToObject(+prompt('Введите число от 0 до 999'))">Функция преобразующая число в
+    <button onclick="convertNumberToObject(prompt('Введите число от 0 до 999'))">Функция преобразующая число в
         объект</button>
     <button onclick="console.log(createArrayProductObject(NAME_PRODUCTS, PRICE_PRODUCTS))">Создать массив объектов
         продукт</button>
@@ -30,18 +30,10 @@
 
         // Task 1
         function convertNumberToObject(number) {
-            if (isNaN(number)) {
-                console.log(`${number} is not a number`);
-                return {};
-            }
-            console.log(`The number is ${number}`);
-            if (number > 999) {
-                console.log(`The number ${number} is more then 999`);
-                return {};
-            } else if (number < 0) {
-                number = -number;
-            }
-            let result = { units: number % 10, tens: Math.floor(number / 10) % 10, hundreds: Math.floor(number / 100) % 10 };
+            let result = isNaN(+number) ? (console.log(`${number} is not a number`), number = +number, {}) :
+                number > 999 ? (console.log(`The number ${number} is more then 999`), {}) :
+                    number < 0 ? { units: -number % 10, tens: Math.floor(-number / 10) % 10, hundreds: Math.floor(-number / 100) % 10 } :
+                        { units: number % 10, tens: Math.floor(number / 10) % 10, hundreds: Math.floor(number / 100) % 10 };
             console.log(result)
             return result;
         }
@@ -58,6 +50,7 @@
             'CUCUMBER PEOPLE T-SHIRT',
             'TOMATO PEOPLE T-SHIRT'
         ];
+
         const PRICE_PRODUCTS = [
             '52.00',
             '53.00',
