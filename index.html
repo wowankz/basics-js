@@ -32,9 +32,9 @@
         function convertNumberToObject(number) {
             let result = isNaN(+number) ? (console.log(`${number} is not a number`), number = +number, {}) :
                 number > 999 ? (console.log(`The number ${number} is more then 999`), {}) :
-                    number < 0 ? { units: -number % 10, tens: Math.floor(-number / 10) % 10, hundreds: Math.floor(-number / 100) % 10 } :
-                        { units: number % 10, tens: Math.floor(number / 10) % 10, hundreds: Math.floor(number / 100) % 10 };
-            console.log(result)
+                    number < 0 ? { 'units': -number % 10, 'tens': Math.floor(-number / 10) % 10, 'hundreds': Math.floor(-number / 100) % 10 } :
+                        { 'units': number % 10, 'tens': Math.floor(number / 10) % 10, 'hundreds': Math.floor(number / 100) % 10 };
+            console.log(`Number is : %s \nObject from number : %o`, number, result)
             return result;
         }
 
