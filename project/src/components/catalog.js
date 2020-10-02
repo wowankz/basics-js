@@ -22,7 +22,7 @@ Products = {
                 content += `
                     <div class="card">
                     <div class="card__hover">
-                        <a href="#" class="card__button-add"><img src="../src/assets/images/cart-white.png" alt="cart"
+                        <a href="#" class="card__button-add"><img id="${element.id}"  src="../src/assets/images/cart-white.png" alt="cart"
                                 class="card__cart-img">Add to Cart</a>
                     </div>
                     <a href="#" class="card__link"><img
@@ -34,11 +34,11 @@ Products = {
                         </a>
                         <div class="card__price">$${element.price}
                             <div class="card__stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                                <i class="${element.stars > '0' ? 'fas' : 'far'} ${element.stars === '0.5' ? 'fa-star-half-alt' :'fa-star'  } "></i>
+                                <i class="${element.stars > '1' ? 'fas' : 'far'} ${element.stars === '1.5' ? 'fa-star-half-alt' :'fa-star'  }"></i>
+                                <i class="${element.stars > '2' ? 'fas' : 'far'} ${element.stars === '2.5' ? 'fa-star-half-alt' :'fa-star'  }"></i>
+                                <i class="${element.stars > '3' ? 'fas' : 'far'} ${element.stars === '3.5' ? 'fa-star-half-alt' :'fa-star'  }"></i>
+                                <i class="${element.stars > '4' ? 'fas' : 'far'} ${element.stars === '4.5' ? 'fa-star-half-alt' :'fa-star'  }"></i>
                             </div>
                         </div>
                     </div>
@@ -48,6 +48,8 @@ Products = {
         });
         this.container.innerHTML = content;
     },
+
+
 
     async getProducts(url) {
         let res = await fetch(url);
