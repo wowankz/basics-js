@@ -1,0 +1,42 @@
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .main {
+    .shopping-cart__form {
+      justify-content: space-around;
+      & form {
+        margin-bottom: 4rem;
+      }
+    }
+    .shopping-cart__product-details {
+      .shopping-cart__product-info {
+        width: auto;
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .main {
+    .shopping-cart__product-details {
+      .shopping-cart__product-info {
+        padding-left: 0;
+        text-align: left;
+      }
+      .shopping-cart__product-img {
+        display: none;
+      }
+    }
+
+    .shopping-cart__headings-name {
+      font-size: 0.8rem;
+    }
+    .shopping-cart__button_red {
+      text-align: center;
+    }
+  }
+}

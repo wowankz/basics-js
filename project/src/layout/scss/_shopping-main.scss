@@ -1,0 +1,351 @@
+.breadcrumb {
+  @include breadcrumb;
+}
+
+.main {
+  .shopping-cart {
+    &__table {
+      padding: 9rem 0 4.4rem;
+    }
+
+    &__headings {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: $main-font-color;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding-bottom: 2rem;
+      border-bottom: 0.1rem solid #eaeaea;
+    }
+
+    &__headings-name {
+      width: 14rem;
+      text-align: center;
+      &_big {
+        width: 44rem;
+        letter-spacing: -0.02rem;
+        text-align: left;
+      }
+      &:last-child {
+        width: 6rem;
+      }
+    }
+
+    &__product {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      padding: 2.5rem 0;
+      border-bottom: 0.1rem solid #eaeaea;
+      &-details {
+        width: 44rem;
+        display: flex;
+        justify-content: stretch;
+        align-items: stretch;
+        .shopping-cart__product-img {
+          width: 10rem;
+          height: 11.5rem;
+          background-color: rgba(101, 169, 200, 0.09);
+          & > img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            object-position: center;
+            transition: 0.3s;
+            &:hover {
+              box-shadow: 0.1rem 0.2rem 0.3rem 0 $shadow-color;
+              transform: scale(1.05);
+            }
+          }
+        }
+        .shopping-cart__product-info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          width: 34rem;
+          padding-left: 2.1rem;
+          .shopping-cart__product-name {
+            & > h3 {
+              font-size: 1.3rem;
+              font-weight: 700;
+              text-transform: uppercase;
+            }
+            color: $main-font-color;
+            margin-bottom: 3.4rem;
+            margin-top: 1rem;
+            &:hover {
+              color: $extra-color;
+            }
+          }
+
+          .shopping-cart__product-property {
+            color: #575757;
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 2rem;
+            & > span {
+              color: #6f6e6e;
+              font-weight: 400;
+              padding-left: 1rem;
+            }
+          }
+        }
+      }
+
+      &-price {
+        width: 14rem;
+        color: #656565;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 2rem;
+      }
+
+      &-quantity {
+        width: 14rem;
+        & > input {
+          outline: none;
+          width: 5.4rem;
+          height: 3rem;
+          border: 0.1rem solid #eaeaea;
+          text-align: center;
+          font-weight: 400;
+          color: #656565;
+          padding-left: 1.2rem;
+          font-size: 1.4rem;
+          &::placeholder {
+            color: #bcbcbc;
+          }
+          @include input-hover-focus;
+        }
+      }
+
+      &-shipping {
+        width: 14rem;
+        color: #656565;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 2rem;
+        text-transform: uppercase;
+      }
+
+      &-subtotal {
+        width: 14rem;
+        color: #656565;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 2rem;
+      }
+
+      &-action {
+        width: 6rem;
+        color: #c0c0c0;
+        font-family: "Font Awesome";
+        font-size: 1.6rem;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+    }
+
+    &__product-close {
+      color: #c0c0c0;
+      & i {
+        transition: 0.2s;
+      }
+      &:hover i {
+        color: $extra-color;
+        transform: scale(1.2);
+      }
+    }
+
+    &__button-box {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6.3rem;
+    }
+
+    &__button {
+      border: 0.1rem solid #eaeaea;
+      background-color: #ffffff;
+      color: #4a4a4a;
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.4rem;
+      text-transform: uppercase;
+      padding: 1.8rem 3.9rem;
+      transition: all 0.4s;
+      @include hover-white-button;
+      &_red {
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #ffffff;
+        background-color: $extra-color;
+        padding: 1.8rem 4.2rem;
+        @include hover-red-button;
+      }
+    }
+
+    &__form {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    &__form-address {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &__form-heading {
+      color: $main-font-color;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 2.2rem;
+    }
+
+    &__form-country {
+      margin-bottom: 2rem;
+      position: relative;
+      & > input {
+        width: 35.5rem;
+        border: 0.1rem solid #eaeaea;
+        font-size: 1.3rem;
+        font-weight: 400;
+        padding: 1.6rem 1.8rem;
+        outline: none;
+        &::placeholder {
+          color: #b1b1b1;
+        }
+        @include input-hover-focus;
+      }
+      &::after {
+        content: "\f0d7";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        padding-left: 0.8rem;
+        color: #bdbdbd;
+        font-size: 1.8rem;
+        position: absolute;
+        top: 1.4rem;
+        right: 1.8rem;
+      }
+    }
+
+    &__form-state {
+      width: 35.5rem;
+      border: 0.1rem solid #eaeaea;
+      font-size: 1.3rem;
+      font-weight: 400;
+      padding: 1.6rem 1.8rem;
+      outline: none;
+      margin-bottom: 2rem;
+      &::placeholder {
+        color: #b1b1b1;
+      }
+      @include input-hover-focus;
+    }
+
+    &__form-postcode {
+      width: 35.5rem;
+      border: 0.1rem solid #eaeaea;
+      font-size: 1.3rem;
+      font-weight: 400;
+      padding: 1.6rem 1.8rem;
+      outline: none;
+      margin-bottom: 2.3rem;
+      /* Chrome, Safari, Edge, Opera */
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      -moz-appearance: textfield;
+      &::placeholder {
+        color: #b1b1b1;
+      }
+      @include input-hover-focus;
+    }
+
+    &__form-button {
+      color: #4a4a4a;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 0.1rem solid #eaeaea;
+      padding: 1.2rem 1.4rem;
+      transition: all 0.4s;
+      @include hover-white-button;
+    }
+
+    &__form-discount {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .shopping-cart__label-coupon {
+        color: #000000;
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin: 0.6rem 0 1.4rem;
+      }
+    }
+
+    &__form-coupon {
+      width: 35.5rem;
+      border: 0.1rem solid #eaeaea;
+      font-size: 1.3rem;
+      font-weight: 400;
+      padding: 1.6rem 1.8rem;
+      outline: none;
+      margin-bottom: 2.3rem;
+      &::placeholder {
+        color: #b1b1b1;
+      }
+      @include input-hover-focus;
+    }
+
+    &__form-total {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      background-color: #f5f3f3;
+      padding: 4rem 4.2rem 4.4rem;
+      text-align: end;
+      align-self: start;
+    }
+
+    &__form-sub {
+      color: #4a4a4a;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      & > span {
+        margin-left: 1rem;
+      }
+    }
+
+    &__form-grand {
+      color: $main-font-color;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      & > span {
+        color: $extra-color;
+        margin-left: 1rem;
+      }
+      padding-bottom: 2.2rem;
+      border-bottom: 0.1rem solid #e2e2e2;
+      margin-bottom: 1.7rem;
+    }
+  }
+}
+
+@import "shopping-main-media";

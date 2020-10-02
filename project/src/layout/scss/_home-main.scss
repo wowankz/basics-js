@@ -1,0 +1,209 @@
+.main {
+}
+// section slider
+.slider {
+  display: flex;
+  align-items: flex-start;
+  background-color: #e8e8e8;
+  background-image: url(../../assets/images/slider.jpg);
+  background-repeat: no-repeat;
+  background-position: center -5.1rem;
+
+  height: 61.4rem;
+  &__content {
+    color: $main-font-color;
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    border-left: 1.2rem solid $extra-color;
+    padding-left: 1.2rem;
+    margin-top: 22.4rem;
+  }
+
+  &__h1 {
+    font-size: 6rem;
+    line-height: 4rem;
+    letter-spacing: 0.15rem;
+    margin-bottom: 1.9rem;
+  }
+
+  &__h2 {
+    font-size: 4rem;
+    line-height: 3.3rem;
+    & > span {
+      color: $extra-color;
+    }
+  }
+}
+
+// section category
+.category {
+  height: 82.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 10rem;
+  &__item {
+    // height: 26.1rem;
+    width: 56rem;
+    display: block;
+    position: relative;
+    transition: 0.3s;
+    &_big {
+      // height: 54.2rem;
+      width: 56rem;
+    }
+  }
+
+  &__img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    &:hover {
+      box-shadow: 0.2rem 0.2rem 0.8rem $shadow-color;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 2.6rem;
+    height: 8.2rem;
+    padding: 1.6rem 1.8rem;
+    background-color: #ffffff;
+    color: $main-font-color;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    &-name {
+      font-weight: 900;
+      letter-spacing: 0.045rem;
+    }
+    &-heading {
+      color: $extra-color;
+      font-size: 3rem;
+      letter-spacing: 0.075rem;
+    }
+  }
+}
+
+// section products
+.products {
+  text-align: center;
+  margin-top: 10rem;
+
+  &__h2 {
+    color: $main-font-color;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 2.4rem;
+    letter-spacing: 0.075rem;
+  }
+
+  &__desc {
+    color: #9f9f9f;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.035rem;
+    margin-top: 1.6rem;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 6rem;
+    line-height: 1.6rem;
+    .card {
+      @include product-card;
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    margin-top: 5.1rem;
+  }
+}
+
+// section Feature
+.feature {
+  padding-top: 11.3rem;
+  &__box {
+    background-color: #222224;
+    display: flex;
+  }
+
+  &__img {
+    height: 52.9rem;
+    width: 76.7rem;
+    background-color: #f0f0f0;
+    background-image: url(../../assets/images/Feature_img.jpg);
+    background-size: cover;
+    padding-top: 13.2rem;
+    padding-left: 3.9rem;
+  }
+
+  &__h1 {
+    font-size: 5.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.15rem;
+    &_color {
+      font-size: 5.4rem;
+      font-weight: 700;
+      color: $extra-color;
+      letter-spacing: 0.15rem;
+    }
+  }
+
+  &__h2 {
+    font-size: 3.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.09rem;
+  }
+
+  &__articles {
+    width: 37.3rem;
+    padding: 4.8rem 3.6rem 4.8rem 3.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__article {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__article-img {
+    align-self: start;
+    width: 4rem;
+  }
+
+  &__article-content {
+    width: 100%;
+  }
+
+  &__article-h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fbfbfb;
+    letter-spacing: 0.03em;
+    margin-left: 3.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__article-text {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #fbfbfb;
+    letter-spacing: 0.03em;
+    line-height: 2.4rem;
+    margin-left: 3rem;
+  }
+}
+
+@import "home-main-media";

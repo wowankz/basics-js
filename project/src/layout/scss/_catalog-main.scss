@@ -1,0 +1,650 @@
+.breadcrumb {
+  @include breadcrumb;
+}
+
+.wrap {
+  display: flex;
+  padding-top: 5.9rem;
+  justify-content: space-between;
+  .aside-nav {
+    .aside-menu {
+      width: 24.3rem;
+      cursor: pointer;
+      margin-bottom: 1.8rem;
+      & > input[type="checkbox"]:checked + label {
+        color: $extra-color;
+        &::after {
+          content: "\f0d8";
+          color: $extra-color;
+        }
+      }
+      & > input[type="checkbox"]:checked ~ .aside-menu__drop-menu {
+        height: 46rem;
+      }
+      &__heading {
+        display: flex;
+        color: #6f6e6e;
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-bottom: 0.1rem solid #ebebeb;
+        border-left: 0.5rem solid #ef5b70;
+        padding: 1.2rem 1.1rem 1.5rem;
+        outline: none;
+        position: relative;
+        transition-duration: 0.5s;
+        &::after {
+          content: "\f0d7";
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          position: absolute;
+          right: 0.6rem;
+          color: #6f6e6e;
+          font-size: 1.6rem;
+          text-transform: uppercase;
+        }
+        &:hover {
+          color: $extra-color;
+          transition-duration: 0.3s;
+        }
+      }
+
+      &__drop-menu {
+        overflow: hidden;
+        transition-duration: 0.5s;
+        height: 0;
+      }
+
+      &__nav {
+        padding: 2.2rem 0 0 1.2rem;
+      }
+
+      &__nav-list {
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 3.3rem;
+      }
+
+      &__nav-item {
+        list-style-type: none;
+      }
+
+      &__nav-link {
+        color: #6f6e6e;
+        transition: 0.2s;
+        display: inline-block;
+        position: relative;
+        @include hover-link;
+      }
+    }
+  }
+
+  .main {
+    padding-left: 4.9rem;
+    .catalog {
+      &-form {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        &__trending {
+          flex-basis: 32%;
+          &-inputs {
+            max-width: 22rem;
+            display: flex;
+            flex-wrap: wrap;
+          }
+          &-label {
+            display: flex;
+            margin-bottom: 1rem;
+            color: #6f6e6e;
+            font-size: 1.4rem;
+            font-weight: 400;
+            cursor: pointer;
+            &:not(:last-child)::after {
+              content: "|";
+              color: #dfdfdf;
+              margin: 0 1.2rem;
+            }
+          }
+          &-input:checked + span {
+            color: $extra-color;
+          }
+        }
+
+        &__heading {
+          color: #6f6e6e;
+          font-size: 1.4rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin-bottom: 2.5rem;
+        }
+
+        &__size {
+          flex-basis: 32%;
+          &-inputs {
+            display: flex;
+            flex-wrap: wrap;
+          }
+          &-label {
+            color: #6f6e6e;
+            font-family: "Open Sans";
+            font-size: 1.4rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            flex-basis: 25%;
+            margin-bottom: 1rem;
+            padding-right: 0.5rem;
+            cursor: pointer;
+          }
+          &-input {
+            cursor: pointer;
+            margin-right: 1rem;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            -o-appearance: none;
+            outline: none;
+            content: none;
+            outline: none;
+            transition-duration: 0.3s;
+            &:before {
+              width: 1.3rem;
+              height: 1.3rem;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-family: "FontAwesome";
+              content: "\f00c";
+              font-size: 1rem;
+              color: transparent;
+              background: #fff;
+              border: 0.1rem solid #ebebeb;
+              transition-duration: 0.3s;
+            }
+
+            &:checked:before {
+              color: $extra-color;
+              border: 0.01rem solid $extra-color;
+              box-shadow: 0 0 0.1rem 0 $extra-color;
+            }
+          }
+        }
+
+        &__price-box {
+          flex-basis: 32%;
+        }
+
+        &__range-inputs {
+          display: flex;
+        }
+        &__range-wrap {
+          flex-basis: 50%;
+          position: relative;
+        }
+        &__range-min {
+          width: 100%;
+          position: absolute;
+          -webkit-appearance: none;
+          height: 0.6rem;
+          outline: none;
+          background: transparent;
+          top: 0.2rem;
+          right: 0;
+          left: 0;
+
+          &::-webkit-slider-runnable-track {
+            -webkit-appearance: none;
+          }
+
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 1.4rem;
+            width: 1.4rem;
+            border-radius: 50%;
+            cursor: pointer;
+            background: $extra-color;
+            z-index: -1;
+          }
+
+          &::-moz-range-track {
+            -webkit-appearance: none;
+            height: 0.6rem;
+            background-color: $extra-color;
+            border-radius: 1rem;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+
+          &::-moz-range-thumb {
+            -webkit-appearance: none;
+            height: 1.4rem;
+            width: 1.4rem;
+            border-radius: 50%;
+            border: transparent;
+            cursor: pointer;
+            background: $extra-color;
+            z-index: -1;
+          }
+
+          &::-moz-range-progress {
+            background-color: #f0f0f0;
+            height: 0.6rem;
+            border-radius: 1rem;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+        &__meter-min {
+          width: 100%;
+          display: block;
+          background: transparent;
+          &::-webkit-meter-bar {
+            background: $extra-color;
+            height: 0.6rem;
+            border: transparent;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+
+          /* The green (optimum) bar in Chrome etc. */
+          &::-webkit-meter-optimum-value {
+            background: #f0f0f0;
+            height: 0.6rem;
+          }
+
+          &:-moz-meter-sub-optimum::-moz-meter-bar {
+            background: transparent;
+          }
+          &:-moz-meter-optimum::-moz-meter-bar {
+            background: transparent;
+          }
+        }
+        &__range-max {
+          width: 100%;
+          position: absolute;
+          -webkit-appearance: none;
+          height: 0.6rem;
+          outline: none;
+          background: transparent;
+          top: 0.2rem;
+          right: 0;
+          left: 0;
+
+          &::-webkit-slider-runnable-track {
+            -webkit-appearance: none;
+          }
+
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 1.4rem;
+            width: 1.4rem;
+            border-radius: 50%;
+            cursor: pointer;
+            background: $extra-color;
+            z-index: -1;
+          }
+
+          &::-moz-range-track {
+            -webkit-appearance: none;
+            height: 0.6rem;
+            background-color: #f0f0f0;
+            border-radius: 1rem;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+
+          &::-moz-range-thumb {
+            -webkit-appearance: none;
+            height: 1.4rem;
+            width: 1.4rem;
+            border-radius: 50%;
+            border: transparent;
+            cursor: pointer;
+            background: $extra-color;
+            z-index: -1;
+          }
+
+          &::-moz-range-progress {
+            background-color: $extra-color;
+            height: 0.6rem;
+            border-radius: 1rem;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+        }
+        &__meter-max {
+          width: 100%;
+          display: block;
+          background: transparent;
+          &::-webkit-meter-bar {
+            background: #f0f0f0;
+            height: 0.6rem;
+            border: transparent;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+
+          /* The green (optimum) bar in Chrome etc. */
+          &::-webkit-meter-optimum-value {
+            background: $extra-color;
+            height: 0.6rem;
+          }
+
+          &:-moz-meter-sub-optimum::-moz-meter-bar {
+            background: transparent;
+          }
+          &:-moz-meter-optimum::-moz-meter-bar {
+            background: transparent;
+          }
+        }
+
+        &__range-outputs {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 1.6rem;
+        }
+
+        &__output-min {
+          color: #6f6e6e;
+          font-family: "Open Sans";
+          font-size: 1.4rem;
+          font-weight: 400;
+        }
+        &__output-max {
+          color: #6f6e6e;
+          font-family: "Open Sans";
+          font-size: 1.4rem;
+          font-weight: 400;
+        }
+
+        &__sort-container {
+          display: flex;
+          flex-basis: 100%;
+          align-items: center;
+          height: 5rem;
+          background-color: #f3f3f3;
+          margin-top: 4rem;
+        }
+
+        &__sort {
+          height: 3rem;
+          border: 0.1rem solid #ebebeb;
+          background-color: #fff;
+          display: flex;
+          margin-left: 1rem;
+        }
+
+        &__sort-name {
+          text-align: center;
+          border-right: 0.1rem solid #ebebeb;
+          color: #6f6e6e;
+          font-size: 1.4rem;
+          font-weight: 400;
+          padding: 0.5rem 1.2rem;
+        }
+
+        &__sort-details {
+          position: relative;
+        }
+
+        &__sort-value {
+          display: block;
+          position: relative;
+          outline: none;
+          height: 3rem;
+          min-width: 8.3rem;
+          text-align: center;
+          color: #6f6e6e;
+          font-size: 1.4rem;
+          font-weight: 400;
+          line-height: 3rem;
+          padding: 0 1.2rem;
+          cursor: pointer;
+          & > output {
+            margin-right: 2.1rem;
+          }
+          &::-webkit-details-marker {
+            display: none;
+          }
+          &::-moz-list-bullet {
+            list-style-type: none;
+          }
+          &::before {
+            content: none;
+          }
+          &::after {
+            content: "\f0d7";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 0.6rem;
+            color: #6f6e6e;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+          }
+        }
+
+        &__sort-options {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          border: 0.1rem solid #ebebeb;
+          background-color: #ffffff;
+          padding: 1.2rem;
+          min-width: 8.3rem;
+          right: 0;
+          top: 2.8rem;
+          border-radius: 0.3rem;
+          z-index: 9999;
+        }
+
+        &__sort-label {
+          color: #6f6e6e;
+          font-size: 1.4rem;
+          font-weight: 400;
+          margin-bottom: 0.8rem;
+          &:hover {
+            color: $extra-color;
+          }
+        }
+
+        &__sort-input {
+          display: none;
+        }
+
+        &__show {
+          height: 3rem;
+          border: 0.1rem solid #ebebeb;
+          background-color: #fff;
+          display: flex;
+          margin-left: 1rem;
+        }
+
+        &__show-name {
+          text-align: center;
+          border-right: 0.1rem solid #ebebeb;
+          color: #6f6e6e;
+          font-size: 1.4rem;
+          font-weight: 400;
+          padding: 0.5rem 1.2rem;
+        }
+
+        &__show-details {
+          position: relative;
+        }
+
+        &__show-value {
+          display: block;
+          position: relative;
+          outline: none;
+          height: 3rem;
+          text-align: center;
+          color: #6f6e6e;
+          font-size: 1.4rem;
+          font-weight: 400;
+          line-height: 3rem;
+          padding: 0 1.2rem;
+          cursor: pointer;
+          & > output {
+            margin-right: 2.1rem;
+          }
+          &::-webkit-details-marker {
+            display: none;
+          }
+          &::-moz-list-bullet {
+            list-style-type: none;
+          }
+          &::before {
+            content: none;
+          }
+          &::after {
+            content: "\f0d7";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 0.6rem;
+            color: #6f6e6e;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+          }
+        }
+
+        &__show-options {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          border: 0.1rem solid #ebebeb;
+          background-color: #ffffff;
+          padding: 1.2rem;
+          min-width: 6.3rem;
+          right: 0;
+          top: 2.8rem;
+          border-radius: 0.3rem;
+          z-index: 9999;
+        }
+
+        &__show-label {
+          color: #6f6e6e;
+          font-size: 1.4rem;
+          font-weight: 400;
+          margin-bottom: 0.8rem;
+          &:hover {
+            color: $extra-color;
+          }
+        }
+
+        &__show-input {
+          display: none;
+        }
+      }
+      &-products {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-top: 3.8rem;
+        .card {
+          @include product-card;
+        }
+      }
+      &-pagination {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 4.3rem;
+        &__list {
+          list-style-type: none;
+          display: flex;
+          background-color: #ffffff;
+          border: 0.1rem solid #ebebeb;
+          border-radius: 0.3rem;
+          padding: 1.6rem 3.9rem;
+          &-item {
+            font-size: 1.6rem;
+            font-weight: 400;
+
+            &:not(:last-child) {
+              margin-right: 1.6rem;
+            }
+            &:nth-of-type(7) {
+              margin-right: 0;
+            }
+            &:nth-of-type(7)::after {
+              content: ".....";
+              color: #c4c4c4;
+              font-size: 1.6rem;
+              margin-left: -0.2rem;
+            }
+          }
+
+          &-link {
+            display: inline-block;
+            color: #c4c4c4;
+            transition-duration: 0.2s;
+            &_active {
+              color: $extra-color;
+            }
+            &:hover {
+              color: $extra-color;
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        &__button {
+          font-size: 1.6rem;
+          font-weight: 400;
+          color: #ef5b70;
+          background-color: #ffffff;
+          border: 0.1rem solid #ef5b70;
+          border-radius: 0.3rem;
+          padding: 1.6rem 4.5rem;
+          @include hover-white-button;
+        }
+      }
+    }
+  }
+}
+
+.feature {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8.9rem;
+  padding-bottom: 11.5rem;
+  margin-top: 11rem;
+  margin-bottom: -9.7rem;
+  background-color: #222224;
+  &__article {
+    // flex-basis: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__article-img {
+    height: 3.5rem;
+    width: 4.7rem;
+    object-fit: contain;
+    margin-bottom: 3.2rem;
+  }
+
+  &__article-content {
+    text-align: center;
+    width: 32rem;
+  }
+
+  &__article-h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fbfbfb;
+    text-align: center;
+    letter-spacing: 0.03em;
+    margin-bottom: 1.7rem;
+  }
+
+  &__article-text {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #fbfbfb;
+    text-align: center;
+    letter-spacing: 0.03em;
+    line-height: 2.4rem;
+  }
+}

@@ -1,0 +1,157 @@
+.breadcrumb {
+  @include breadcrumb;
+}
+
+.main {
+  .checkout {
+    padding-top: 8.9rem;
+    &__shipping-block {
+      border-bottom: 0.1rem solid #e8e8e8;
+      margin-bottom: 3.1rem;
+      padding-bottom: 3.1rem;
+      & > label {
+        cursor: pointer;
+        &:hover .checkout__heading {
+          color: $extra-color;
+        }
+      }
+      & > input[name="drop-checkout"] {
+        display: none;
+      }
+      & > input[name="drop-checkout"]:checked + label > .checkout__heading {
+        color: $extra-color;
+      }
+      & > input[name="drop-checkout"]:checked ~ .checkout__form {
+        height: 46.1rem;
+      }
+    }
+
+    &__heading {
+      color: $main-font-color;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    &__form {
+      display: flex;
+      overflow: hidden;
+      height: 0;
+      transition-duration: 0.6s;
+      &-radio {
+        display: flex;
+        align-items: center;
+        margin-top: 2rem;
+        & > input {
+          border: 0.2rem solid #555555;
+          margin-right: 1.5rem;
+        }
+      }
+    }
+
+    &__form-continue {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-basis: 50%;
+      padding-left: 3.5rem;
+    }
+
+    &__form-h4 {
+      color: $main-font-color;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      margin-top: 3.9rem;
+    }
+
+    &__form-text {
+      color: #b3b2b2;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      &_red {
+        color: #ff0d0d;
+        & > span {
+          font-size: 1.6rem;
+          line-height: 0.5rem;
+        }
+      }
+      & > i {
+        font-size: 1.2rem;
+        margin-right: 0.4rem;
+      }
+    }
+
+    &__form-label {
+      color: $main-font-color;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      & > span {
+        color: #ff0d0d;
+        font-size: 1.6rem;
+        font-weight: 400;
+      }
+    }
+
+    &__form-button {
+      width: 18rem;
+      color: #4a4a4a;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 0.1rem solid #eaeaea;
+      background-color: #fff;
+      padding: 1.6rem 5rem;
+      margin-top: 1.5rem;
+      @include hover-white-button;
+      &_left {
+        margin-top: 1.9rem;
+      }
+    }
+
+    &__form-login {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-basis: 50%;
+      & > input {
+        width: 39rem;
+        height: 4.5rem;
+        border: 0.1rem solid #eaeaea;
+        margin-top: 1.6rem;
+        margin-bottom: 2.2rem;
+        outline: none;
+        padding: 1.2rem 1.5rem;
+        font-size: 1.4rem;
+        &::placeholder {
+          color: #bcbcbc;
+        }
+        @include input-hover-focus;
+      }
+    }
+
+    &__button-box {
+      display: flex;
+      align-items: center;
+    }
+
+    &__form-forgot {
+      display: flex;
+      color: $main-font-color;
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 2rem;
+      margin-left: 3.2rem;
+      margin-top: 1.5rem;
+      transition: 0.3s;
+      &:hover {
+        color: $extra-color;
+      }
+    }
+  }
+}
+
+@import "checkout-main-media";

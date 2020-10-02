@@ -1,0 +1,76 @@
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .main {
+    .checkout {
+      &__heading {
+        font-size: 2rem;
+      }
+      &__form-h4 {
+        font-size: 1.6rem;
+      }
+
+      &__form-text {
+        font-size: 1.5rem;
+      }
+
+      &__form-label {
+        font-size: 1.4rem;
+      }
+
+      &__form-button {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  .main {
+    .checkout {
+      &__form-continue {
+        padding-left: 1rem;
+      }
+
+      &__form-login > input {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .main {
+    .checkout {
+      border-top: 0.1rem solid #ececec;
+    }
+  }
+}
+
+@media (max-width: 499.98px) {
+  .main {
+    .checkout {
+      &__form {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &__form-continue {
+        padding-left: 0;
+        width: 90vw;
+      }
+
+      &__form-login {
+        width: 90vw;
+      }
+
+      &__shipping-block {
+        text-align: center;
+        & > input[name="drop-checkout"]:checked ~ .checkout__form {
+          height: 90rem;
+        }
+      }
+    }
+  }
+}

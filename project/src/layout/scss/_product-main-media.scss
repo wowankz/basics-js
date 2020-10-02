@@ -1,0 +1,171 @@
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .main {
+    .product {
+      &__desc {
+        width: 98vw;
+        & .category-name {
+          font-size: 2.4rem;
+          padding-bottom: 2.5rem;
+        }
+      }
+
+      &__info-h1 {
+        font-size: 2.8rem;
+        margin-top: 3rem;
+      }
+
+      &__text {
+        width: 80vw;
+        line-height: 3.4rem;
+        font-size: 2rem;
+      }
+
+      &__property {
+        .property {
+          font-size: 2.4rem;
+          text-align: center;
+        }
+      }
+      &__price {
+        font-size: 3.4rem;
+      }
+
+      &__hr {
+        width: 80vw;
+      }
+      &__choose {
+        width: 70vw;
+        justify-content: space-between;
+      }
+
+      &__choose-name {
+        font-size: 1.8rem;
+      }
+      &__button {
+        width: 70vw;
+        font-size: 2.2rem;
+      }
+    }
+    .like {
+      &__content {
+        flex-wrap: wrap;
+        .card {
+          width: auto;
+          &__h3 {
+            font-size: 1.8rem;
+          }
+
+          &__link {
+            height: 32rem;
+            width: 28.1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  .main {
+    .product {
+      &__desc {
+        width: 98vw;
+        & .category-name {
+          font-size: 2rem;
+        }
+      }
+
+      &__info-h1 {
+        font-size: 2.4rem;
+      }
+
+      &__text {
+        width: 90vw;
+        line-height: 3.4rem;
+        font-size: 1.8rem;
+      }
+
+      &__property {
+        .property {
+          font-size: 1.8rem;
+          text-align: center;
+        }
+      }
+      &__price {
+        font-size: 3.4rem;
+      }
+
+      &__hr {
+        width: 95vw;
+      }
+      &__choose {
+        width: 90vw;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        & input:not(:last-child) {
+          margin-right: 0;
+        }
+        &-datalist {
+          margin-top: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        &-datalist:not(:last-child)::after {
+          right: 1.9rem;
+        }
+      }
+      &__button {
+        width: 90vw;
+      }
+    }
+
+    .like {
+      &__content {
+        .card {
+          width: auto;
+          &__h3 {
+            font-size: 1.8rem;
+          }
+          &__link {
+            height: 52vw;
+            width: 46vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .main {
+    .product {
+      &__slide-img {
+        height: 110vw;
+      }
+      &__img {
+        height: 100vw;
+      }
+      &__choose-name {
+        font-size: 1.6rem;
+      }
+    }
+    .like {
+      &__content {
+        .card {
+          width: 95vw;
+          border: 0.1rem solid #9e9e9e21;
+          border-radius: 2px;
+          padding-top: 1.9rem;
+        }
+        .card__link {
+          height: auto;
+          width: 88vw;
+        }
+      }
+    }
+  }
+}

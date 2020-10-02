@@ -1,0 +1,170 @@
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .footer {
+    &__subscribe {
+      height: auto;
+      flex-direction: column;
+      align-items: center;
+      &-left {
+        border-right: none;
+        & .left__content {
+          width: auto;
+        }
+        & .left__quote {
+          font-size: 2.2rem;
+        }
+
+        & .left__box-name {
+          font-size: 1.8rem;
+          padding-top: 2rem;
+          & .left__name_color {
+            font-size: 2.1rem;
+          }
+        }
+
+        & .left__link-box {
+          justify-content: center;
+          & .left__link {
+            width: 6.8rem;
+          }
+        }
+      }
+
+      &-right {
+        display: flex;
+        & .right {
+          flex-basis: 100%;
+          padding: 9rem 0 9rem 0;
+          font-size: 2rem;
+          &__form {
+            align-self: center;
+            height: 6rem;
+            border-radius: 3.5rem;
+            &-input {
+              background-color: #b2b2b2;
+              width: 30.2rem;
+              height: inherit;
+              font-size: 2rem;
+              &::placeholder {
+                color: #ffffff;
+              }
+            }
+
+            &-button {
+              font-size: 2rem;
+              padding: 0.8rem 2rem;
+            }
+          }
+
+          &__h2 {
+            font-size: 3.1rem;
+            line-height: normal;
+          }
+        }
+      }
+    }
+
+    &-content {
+      flex-wrap: wrap;
+      justify-content: space-around;
+      &__about {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-basis: 100%;
+        text-align: center;
+      }
+      &__company {
+        margin-left: 0;
+        flex-basis: 32%;
+        text-align: center;
+      }
+      &__information {
+        margin-left: 0;
+        flex-basis: 32%;
+        text-align: center;
+      }
+
+      &__category {
+        margin-left: 0;
+        flex-basis: 32%;
+        text-align: center;
+      }
+      &__desc {
+        min-width: 92vw;
+        font-size: 2rem;
+      }
+
+      &__h3 {
+        font-size: 2.6rem;
+        margin-top: 2rem;
+      }
+
+      .footer-menu__link {
+        font-size: 2.2rem;
+      }
+    }
+
+    &__copyright {
+      margin-top: 3.5rem;
+      &-text {
+        font-size: 2.6rem;
+      }
+
+      &-link {
+        height: 6.2rem;
+        width: 6.2rem;
+        font-size: 2.6rem;
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  .footer {
+    &__subscribe {
+      &-left {
+        display: none;
+      }
+    }
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .footer {
+    .right__form {
+      width: 75vw;
+      &-input {
+        width: 100%;
+      }
+    }
+
+    &__copyright {
+      flex-direction: column-reverse;
+      padding-bottom: 2rem;
+      padding-top: 2rem;
+      &-icons {
+        margin-bottom: 2rem;
+      }
+
+      &-link {
+        width: 17vw;
+      }
+    }
+
+    &-content {
+      &__company {
+        flex-basis: 49%;
+      }
+      &__information {
+        flex-basis: 49%;
+      }
+
+      &__category {
+        flex-basis: 49%;
+      }
+    }
+  }
+}

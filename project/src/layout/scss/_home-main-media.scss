@@ -1,0 +1,256 @@
+@media screen and (max-width: 1140px) {
+  .category__item {
+    width: 48vw;
+    &_big {
+      width: 48vw;
+    }
+  }
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .slider {
+    background-size: cover;
+    background-position: 9.7rem;
+    height: 43.4rem;
+    &__content {
+      margin-top: 16.4rem;
+    }
+  }
+
+  .category {
+    height: 70vw;
+  }
+  .products {
+    .card {
+      width: auto;
+      &__h3 {
+        font-size: 1.8rem;
+      }
+    }
+    &__h2 {
+      font-size: 5rem;
+      line-height: normal;
+    }
+
+    &__desc {
+      font-size: 2.4rem;
+    }
+
+    &__content {
+      & .card__link {
+        height: 32rem;
+        width: 28.1rem;
+      }
+    }
+
+    &__button {
+      padding: 2.2rem 2.2rem 2.2rem 2.9rem;
+      font-size: 2.5rem;
+      & i {
+        margin-left: 1.8rem;
+        font-size: 2.4rem;
+      }
+    }
+  }
+
+  .feature {
+    &__box {
+      flex-wrap: wrap;
+    }
+
+    &__img {
+      flex-basis: 100%;
+    }
+
+    &__articles {
+      flex-basis: 100%;
+      flex-direction: row;
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
+    &__article {
+      flex-direction: column;
+      align-items: center;
+      &-img {
+        align-self: center;
+        width: 6rem;
+        height: 5rem;
+        margin-bottom: 1rem;
+        object-fit: scale-down;
+      }
+
+      &-content {
+        text-align: center;
+      }
+
+      &-h3 {
+        font-size: 3rem;
+      }
+
+      &-text {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  .slider {
+    background-position: -10rem;
+
+    &__content {
+      margin-top: 11.4rem;
+    }
+  }
+
+  .products {
+    .card {
+      width: auto;
+      &__h3 {
+        font-size: 1.8rem;
+      }
+    }
+    &__h2 {
+      font-size: 5rem;
+      line-height: normal;
+    }
+
+    &__desc {
+      font-size: 2.4rem;
+    }
+
+    &__content {
+      & .card__link {
+        height: 52vw;
+        width: 46vw;
+      }
+    }
+  }
+
+  .feature {
+    &__box {
+      flex-wrap: wrap;
+    }
+
+    &__img {
+      flex-basis: 100%;
+    }
+
+    &__articles {
+      flex-basis: 100%;
+      flex-direction: column;
+      padding-right: 0.5rem;
+      padding-left: 2rem;
+    }
+
+    &__article {
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 1.5rem 0;
+      &-img {
+        align-self: center;
+        width: 6rem;
+        height: 5rem;
+        margin-bottom: 1rem;
+        object-fit: scale-down;
+      }
+
+      &-content {
+        text-align: left;
+      }
+
+      &-h3 {
+        font-size: 3rem;
+      }
+
+      &-text {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .slider {
+    height: 29rem;
+    background-blend-mode: overlay;
+    align-items: center;
+    &__content {
+      margin-top: 0;
+    }
+    &__h1 {
+      font-size: 5rem;
+    }
+    &__h2 {
+      font-size: 3.2rem;
+    }
+  }
+
+  .category {
+    flex-direction: row;
+    justify-content: center;
+    height: auto;
+    .category__item {
+      width: 97vw;
+      margin-bottom: 1rem;
+      &_big {
+        height: 50vw;
+      }
+    }
+    &__img {
+      object-position: top;
+      opacity: 0.3;
+    }
+
+    &__badge{
+          box-shadow: 1px 1px 3px #9E9E9E;
+    }
+  }
+
+  .products {
+    &__content {
+      .card {
+        width: 95vw;
+        border: 0.1rem solid #9e9e9e21;
+        border-radius: 2px;
+        padding-top: 1.9rem;
+      }
+      .card__link {
+        height: auto;
+        width: 88vw;
+      }
+    }
+  }
+
+  .feature {
+    &__img {
+      height: 32.3rem;
+      background-repeat: no-repeat;
+      padding-left: 1rem;
+    }
+
+    &__articles {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    &__article {
+      &-content {
+        padding: 0 1rem;
+        text-align: center;
+      }
+
+      &-h3 {
+        margin-left: 0;
+      }
+
+      &-text {
+        margin-left: 0;
+      }
+    }
+  }
+}
