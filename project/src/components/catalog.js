@@ -49,12 +49,11 @@ function createProducts(url, container) {
     },
   };
 }
+let Prod = null;
+let Cat = null;
+let Like = null;
 
 window.onload = () => {
-  let Prod = null;
-  let Cat = null;
-  let Like = null;
-
   let container = document.querySelector("#prod");
   container ? ((Prod = createProducts("http://127.0.0.1:5500/project/src/components/models/prod.json", container)), Prod.init()) : "";
 
