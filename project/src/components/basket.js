@@ -37,8 +37,8 @@ basket = {
                               <i class="${item.stars > "4" ? "fas" : "far"} ${item.stars === "4.5" ? "fa-star-half-alt" : "fa-star"}"></i>
                         </div>
                         <div class="drop-cart__product-price">
-                            <span class="drop-cart__product-count">${item.count}</span>x
-                            <span class="drop-cart__product-sum">$${item.price * item.count}</span>
+                            <span class="drop-cart__product-count">${item.count} </span> x ${item.price}
+                            <span class="drop-cart__product-sum"> = $${item.price * item.count}</span>
                         </div>
                     </div>
                     <a href="#" onclick="basket.removeItem(${item.id})" class="drop-cart__product-close"><i class="far fa-times-circle"></i></a>
