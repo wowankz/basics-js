@@ -63,11 +63,11 @@ let Like = null;
 
 window.onload = () => {
   let container = document.querySelector("#prod");
-  container ? ((Prod = createProducts("http://127.0.0.1:5500/project/src/components/models/prod.json", container)), Prod.init()) : "";
+  container ? ((Prod = createProducts("../src/components/models/prod.json", container)), Prod.init()) : "";
 
   container = document.querySelector("#cat");
-  container ? ((Cat = createProducts("http://127.0.0.1:5500/project/src/components/models/cat.json", container)), Cat.init()) : "";
+  container ? ((Cat = createProducts("../src/components/models/cat.json", container)), Cat.init()) : "";
 
   container = document.querySelector("#like");
-  container ? ((Like = createProducts("http://127.0.0.1:5500/project/src/components/models/like.json", container)), Like.init()) : "";
+  container ? ((Like = createProducts("../src/components/models/like.json", container)), Like.init()) : "";
 };
