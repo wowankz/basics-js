@@ -44,10 +44,7 @@ function createProducts(url, container) {
     },
 
     _addEvent() {
-      let buttons = document.querySelectorAll('a[data-cart="basket"]');
-      buttons.forEach(button => {
-        button.addEventListener("click", basket.addItem.bind(basket), true);
-      })
+      this.container.addEventListener("click", basket.addItem.bind(basket), true);
     },
 
     async getProducts(url) {

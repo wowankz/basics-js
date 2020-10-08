@@ -5,7 +5,7 @@ const calc = {
     _currentInput: null,
     _historyInput: null,
     _result: null,
-    _history: null,
+    _history: [],
     _operand: null,
     _prevOperand: null,
     _lastAction: null,
@@ -36,26 +36,24 @@ const calc = {
     },
 
     _renderInput() {
-        this._currentInput.value = this._operand || this._result;
-        this._historyInput.value = this._history.join('');
+        this._currentInput.value = this._operand.replace(/(\d)(?=(\d{3})+(\D|$))/g, '$1 ') || this._result.toString().replace(/(\d)(?=(\d{3})+(\D|$))/g, '$1 ');
+        this._historyInput.value = this._history.join('').replace(/(\d)(?=(\d{3})+(\D|$))/g, '$1 ');
     },
 
     _addEvent() {
-        let buttons = document.querySelectorAll("button");
-        buttons.forEach(button => {
-            button.addEventListener("click", this._handlerEvent.bind(this), true);
-        })
+        let calc = document.querySelector("#calc");
+        calc.addEventListener("click", this._handlerEvent.bind(this), true);
     },
 
     _handlerEvent(event) {
-        switch (event.currentTarget.name) {
+        switch (event.target.name || event.target.parentNode.name) {
             case "actions":
             case "operators":
-                this._action(event.currentTarget.dataset.value);
+                this._action(event.target.dataset.value || event.target.parentNode.dataset.value);
                 break;
 
             case "keyboard":
-                this._input(event.currentTarget.dataset.value);
+                this._input(event.target.dataset.value || event.target.parentNode.dataset.value);
                 break;
 
             default:
@@ -64,7 +62,15 @@ const calc = {
     },
 
     _action(action) {
-        if (action === "C") { this.init(); return; }
+        if (action === "C") {
+            this._result = 0;
+            this._history = [];
+            this._operand = '';
+            this._prevOperand = '';
+            this._lastAction = '';
+            this._renderInput();
+            return;
+        }
 
         if (action === "back") {
             this._operand = this._operand.slice(0, -1);
@@ -73,7 +79,7 @@ const calc = {
         }
         if (this._lastAction === "=" || this._prevOperand !== '' && this._operand !== '') {
             switch (this._lastAction) {
-               case "+":
+                case "+":
                     this._sum(this._prevOperand, this._operand);
                     this._lastAction = action;
                     this._history.push(this._operand, action)
@@ -124,7 +130,9 @@ const calc = {
 
     _input(inp) {
         if (this._lastAction === "=") return;
-        this._operand = inp === '+/-' ? this._operand.includes('-') ? this._operand.slice(1) : '-' + this._operand : this._operand += inp;
+        this._operand = inp === '+/-' ?
+            this._operand.includes('-') ? this._operand.slice(1) : '-' + this._operand : this._operand.length < 15 ? this._operand += inp : this._operand;
+
         this._renderInput()
     },
 

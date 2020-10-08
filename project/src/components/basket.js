@@ -62,23 +62,35 @@ basket = {
 
 
     addItem(event) {
-        let item = JSON.parse(event.currentTarget.dataset.item);
-        item.count = 1;
-        if (this.items.length > 0) {
-            let res = null;
-            this.items.forEach((elem, index) => {
-                if (elem.id === item.id) res = index;
-            });
-            res !== null ? this.items[res].count++ : this.items.push(item);
-        } else {
-            this.items.push(item);
+        if (event.target.dataset.cart === 'basket' || event.target.parentNode.dataset.cart === 'basket') {
+            let item = JSON.parse(event.target.dataset.item || event.target.parentNode.dataset.item);
+            item.count = 1;
+            if (this.items.length > 0) {
+                let res = null;
+                this.items.forEach((elem, index) => {
+                    if (elem.id === item.id) res = index;
+                });
+                res !== null ? this.items[res].count++ : this.items.push(item);
+            } else {
+                this.items.push(item);
+            }
+            this._render()
+            console.log(this.items);
         }
-        this._render()
-        console.log(this.items);
+
     },
 
     removeItem(id) {
-        let res = this.items.filter(elem => elem.id != id);
+        let res = this.items.filter(elem => {
+            if (elem.id !== id) {
+                return true;
+            }
+            if (elem.count > 1) {
+                elem.count--;
+                return true
+            }
+            return false;
+        });
         this.items = res;
         this._render();
     }
