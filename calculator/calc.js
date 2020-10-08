@@ -8,20 +8,20 @@ const calc = {
     _history: null,
     _operand: null,
     _prevOperand: null,
-    _currentOperator: null,
+    _lastAction: null,
 
     init() {
         this._render("actions", this._actions);
         this._render("operators", this._operations);
         this._render("keyboard", this._keyboard);
         this._addEvent();
-        this._currentInput = document.querySelector(`input[name = "current"]`);
+        this._currentInput = document.querySelector(`output[name = "current"]`);
         this._historyInput = document.querySelector(`input[name = "history"]`);
         this._result = 0;
-        this._history = '';
+        this._history = [];
         this._operand = '';
         this._prevOperand = '';
-        this._currentOperator = '';
+        this._lastAction = '';
         this._renderInput();
 
     },
@@ -37,11 +37,11 @@ const calc = {
 
     _renderInput() {
         this._currentInput.value = this._operand || this._result;
-        this._historyInput.value = this._history;
+        this._historyInput.value = this._history.join('');
     },
 
     _addEvent() {
-        let buttons = document.querySelectorAll(" button");
+        let buttons = document.querySelectorAll("button");
         buttons.forEach(button => {
             button.addEventListener("click", this._handlerEvent.bind(this), true);
         })
@@ -50,45 +50,112 @@ const calc = {
     _handlerEvent(event) {
         switch (event.currentTarget.name) {
             case "actions":
-                this._action(event.currentTarget.dataset.value);
-                break;
-
             case "operators":
-                this._operator(event.currentTarget.dataset.value);
+                this._action(event.currentTarget.dataset.value);
                 break;
 
             case "keyboard":
                 this._input(event.currentTarget.dataset.value);
                 break;
+
             default:
                 console.log("unknown action");
         }
     },
 
-    _action(act) {
-        console.log(act);
-    },
-    _operator(opr) {
-        if (!this._operand) return;
-        switch (opr) {
-            case "+":
-                this._currentOperator = opr;
-                this._result = this._prevOperand ? this._operand : (+this._result) + (+this._operand);
-                this._history += this._operand + opr;
-                this._operand = '';
-                this._renderInput();
-                break;
-            case "-":
-                this._result = this._prevOperand ? this._operand : (+this._result) - (+this._operand);
-                this._history += this._operand + opr;
-                this._operand = '';
-                this._renderInput();
-                break;
+    _action(action) {
+        if (action === "C") { this.init(); return; }
+
+        if (action === "back") {
+            this._operand = this._operand.slice(0, -1);
+            this._renderInput();
+            return;
         }
+        if (this._lastAction === "=" || this._prevOperand !== '' && this._operand !== '') {
+            switch (this._lastAction) {
+               case "+":
+                    this._sum(this._prevOperand, this._operand);
+                    this._lastAction = action;
+                    this._history.push(this._operand, action)
+                    this._operand = '';
+                    break;
+
+                case "-":
+                    this._sub(this._prevOperand, this._operand);
+                    this._lastAction = action;
+                    this._history.push(this._operand, action)
+                    this._operand = '';
+                    break;
+
+                case "*":
+                    this._multiply(this._prevOperand, this._operand);
+                    this._lastAction = action;
+                    this._history.push(this._operand, action)
+                    this._operand = '';
+                    break;
+
+                case "/":
+                    this._divide(this._prevOperand, this._operand) ? this._history.push(this._operand, action) : action = "/";
+                    this._lastAction = action;
+                    this._operand = '';
+                    break;
+
+                case "=":
+                    this._lastAction = action;
+                    this._history = [this._result];
+                    this._history.push(action)
+                    break;
+            }
+
+        } else if (this._operand) {
+            this._prevOperand = this._operand;
+            this._result = this._operand;
+            this._lastAction = action;
+            this._history.push(this._operand, action);
+            this._operand = '';
+        } else {
+            this._lastAction = action;
+            this._history.pop();
+            this._history.push(action)
+        }
+
+        this._renderInput();
     },
+
     _input(inp) {
+        if (this._lastAction === "=") return;
         this._operand = inp === '+/-' ? this._operand.includes('-') ? this._operand.slice(1) : '-' + this._operand : this._operand += inp;
         this._renderInput()
+    },
+
+    _sum(num1, num2) {
+        let res = (+num1) + (+num2);
+        this._result = res;
+        this._prevOperand = res;
+    },
+
+    _sub(num1, num2) {
+        let res = (+num1) - (+num2);
+        this._result = res;
+        this._prevOperand = res;
+    },
+
+    _multiply(num1, num2) {
+        let res = (+num1) * (+num2);
+        this._result = res;
+        this._prevOperand = res;
+    },
+
+    _divide(num1, num2) {
+        if (+num2 === 0) {
+            document.querySelector("#messages").style.display = 'flex';
+            setTimeout(() => { document.querySelector("#messages").style.display = 'none' }, 1500)
+            return false;
+        }
+        let res = (+num1) / (+num2);
+        this._result = res;
+        this._prevOperand = res;
+        return true;
     }
 
 }

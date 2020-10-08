@@ -6,64 +6,56 @@
       "name": "Mango People T-Shirt",
       "price": "52.00",
       "img": "product_1.jpg",
-      "stars": "4.5",
-      "containers": ["prod"]
+      "stars": "4.5"
     },
     {
       "id": 2,
       "name": "Banana People T-Shirt",
       "price": "53.00",
       "img": "product_2.jpg",
-      "stars": "4.5",
-      "containers": ["prod"]
+      "stars": "4.5"
     },
     {
       "id": 3,
       "name": "Strawberry People T-Shirt",
       "price": "55.00",
       "img": "product_3.jpg",
-      "stars": "4",
-      "containers": ["prod"]
+      "stars": "4"
     },
     {
       "id": 4,
       "name": "Orange People T-Shirt",
       "price": "67.00",
       "img": "product_4.jpg",
-      "stars": "3.5",
-      "containers": ["prod"]
+      "stars": "3.5"
     },
     {
       "id": 5,
       "name": "Pumpkin People T-Shirt",
       "price": "69.00",
       "img": "product_5.jpg",
-      "stars": "5",
-      "containers": ["prod"]
+      "stars": "5"
     },
     {
       "id": 6,
       "name": "Pineapple People T-Shirt",
       "price": "94.00",
       "img": "product_6.jpg",
-      "stars": "2.5",
-      "containers": ["prod"]
+      "stars": "2.5"
     },
     {
       "id": 7,
       "name": "Cucumber People T-Shirt",
       "price": "23.00",
       "img": "product_7.jpg",
-      "stars": "4.5",
-      "containers": ["prod"]
+      "stars": "4.5"
     },
     {
       "id": 8,
       "name": "Tomato People T-Shirt",
       "price": "45.00",
       "img": "product_8.jpg",
-      "stars": "5",
-      "containers": ["prod"]
+      "stars": "5"
     }
   ]
 }

@@ -7,6 +7,7 @@ function createProducts(url, container) {
       this.container = container;
       await this.getProducts(url);
       this.render();
+      this._addEvent();
     },
 
     render() {
@@ -14,7 +15,7 @@ function createProducts(url, container) {
       this.items.products.forEach((item) => {
         content += `<div class="card">
                       <div class="card__hover">
-                        <a id="${item.id}" href="#" class="card__button-add">
+                        <a id="${item.id}" href="#" class="card__button-add" data-item='${JSON.stringify(item)}' data-cart="basket">
                           <img   src="../src/assets/images/cart-white.png" alt="cart" class="card__cart-img">
                           Add to Cart
                         </a>
@@ -40,6 +41,13 @@ function createProducts(url, container) {
                     </div> `;
       });
       this.container.innerHTML = content;
+    },
+
+    _addEvent() {
+      let buttons = document.querySelectorAll('a[data-cart="basket"]');
+      buttons.forEach(button => {
+        button.addEventListener("click", basket.addItem.bind(basket), true);
+      })
     },
 
     async getProducts(url) {

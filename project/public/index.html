@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/layout/css/home.css">
     <script src="https://kit.fontawesome.com/bad01150ed.js" crossorigin="anonymous"></script>
-    <script src="../src/components/catalog.js"></script>
+
     <title>Главная</title>
 </head>
 
@@ -65,58 +65,18 @@
         </div>
         <div class="header__right">
             <a href="shopping-cart.html" class="header__cart">
-                <div class="header__cart-badge">2</div>
+                <div id="cart-badge" class="header__cart-badge">0</div>
                 <img src="../src/assets/images/cart.png" alt="card" class="header__cart-img">
             </a>
             <div class="drop-cart">
-                <div class="drop-cart__product">
-                    <a href="product.html" class="drop-cart__product-link">
-                        <img src="https://raw.githubusercontent.com/wowankz/static/master/shop/drop-cart_porduct_1.png"
-                            alt="product" class="drop-cart__product-img">
-                    </a>
-                    <div class="drop-cart__product-info">
-                        <a href="product.html" class="drop-cart__product-name">Rebox Zane</a>
-                        <div class="drop-cart__product-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <div class="drop-cart__product-price">
-                            <span class="drop-cart__product-count">1</span>x
-                            <span class="drop-cart__product-sum">$250</span>
-                        </div>
-                    </div>
-                    <a href="#" class="drop-cart__product-close"><i class="far fa-times-circle"></i></a>
-                </div>
-                <div class="drop-cart__product">
-                    <a href="product.html" class="drop-cart__product-link">
-                        <img src="https://raw.githubusercontent.com/wowankz/static/master/shop/drop-cart_porduct_2.png"
-                            alt="product" class="drop-cart__product-img">
-                    </a>
-                    <div class="drop-cart__product-info">
-                        <a href="product.html" class="drop-cart__product-name">Rebox Zane</a>
-                        <div class="drop-cart__product-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <div class="drop-cart__product-price">
-                            <span class="drop-cart__product-count">1 </span>x
-                            <span class="drop-cart__product-sum">$250</span>
-                        </div>
-                    </div>
-                    <a href="#" class="drop-cart__product-close"><i class="far fa-times-circle"></i></a>
+                <div id="basket">
                 </div>
                 <div class="drop-cart__total">
                     <span class="drop-cart__total-name">TOTAL</span>
-                    <span class="drop-cart__total-sum">$500.00</span>
+                    <span id="basket-total" class="drop-cart__total-sum">$500.00</span>
                 </div>
-                <a href="checkout.html" class="drop-cart__button">Checkout</a>
-                <a href="shopping-cart.html" class="drop-cart__button">Go to cart</a>
+                <a id="checkout-button" onclick="return false" href="checkout.html" class="drop-cart__button">Checkout</a>
+                <a id="go-cart" href="shopping-cart.html" class="drop-cart__button">Go to cart</a>
             </div>
 
             <a href="#" class="button">My Account<i class="fas fa-caret-down"></i></a>
@@ -646,7 +606,8 @@
             </div>
         </div>
     </footer>
-
+    <script src="../src/components/basket.js"></script>
+    <script src="../src/components/catalog.js"></script>
 </body>
 
 </html>

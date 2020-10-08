@@ -205,6 +205,18 @@
     display: flex;
     left: -8rem;
   }
+
+  &__empty{
+    display: flex;
+    justify-content: center;
+    border: 0.1rem solid #eaeaea;
+    border-radius: 2px;
+    padding: 1.2rem 0.8rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $extra-color;
+  }
   &__product {
     display: flex;
     justify-content: space-between;
