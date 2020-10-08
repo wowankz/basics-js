@@ -15,7 +15,7 @@ function createProducts(url, container) {
       this.items.products.forEach((item) => {
         content += `<div class="card">
                       <div class="card__hover">
-                        <a id="${item.id}" href="#" class="card__button-add" data-item='${JSON.stringify(item)}' data-cart="basket">
+                        <a id="${item.id}" onclick="return false" href="#" class="card__button-add" data-item='${JSON.stringify(item)}' data-cart="basket">
                           <img   src="../src/assets/images/cart-white.png" alt="cart" class="card__cart-img">
                           Add to Cart
                         </a>
