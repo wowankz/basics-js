@@ -63,11 +63,11 @@ let Like = null;
 
 window.onload = () => {
   let container = document.querySelector("#prod");
-  container ? ((Prod = createProducts("../src/components/models/prod.json", container)), Prod.init()) : "";
+  container ? ((Prod = createProducts("https://raw.githubusercontent.com/wowankz/static/master/shop/models/prod.json", container)), Prod.init()) : "";
 
   container = document.querySelector("#cat");
-  container ? ((Cat = createProducts("../src/components/models/cat.json", container)), Cat.init()) : "";
+  container ? ((Cat = createProducts("https://raw.githubusercontent.com/wowankz/static/master/shop/models/cat.json", container)), Cat.init()) : "";
 
   container = document.querySelector("#like");
-  container ? ((Like = createProducts("../src/components/models/like.json", container)), Like.init()) : "";
+  container ? ((Like = createProducts("https://raw.githubusercontent.com/wowankz/static/master/shop/models/like.json", container)), Like.init()) : "";
 };
