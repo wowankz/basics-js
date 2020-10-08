@@ -1301,6 +1301,11 @@ input::-webkit-calendar-picker-indicator {
           box-shadow: 0 0 0.5rem #ffffff;
 }
 
+.products__content .card__button-add:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .products__content .card__cart-img {
   margin-right: 0.8rem;
 }

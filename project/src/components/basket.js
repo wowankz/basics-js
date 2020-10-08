@@ -1,10 +1,11 @@
 basket = {
-    items: null,
+    items: [],
     container: null,
     containerTotalSum: null,
     badge: null,
     checkoutButton: null,
     goToCartButton: null,
+    storage: null,
 
     init() {
         this.container = document.querySelector("#basket");
@@ -12,7 +13,7 @@ basket = {
         this.badge = document.querySelector("#cart-badge");
         this.checkoutButton = document.querySelector("#checkout-button");
         this.goToCartButton = document.querySelector("#go-cart");
-        this.items = [];
+        this._getStorage();
         this._render();
         console.log("basket init");
     },
@@ -59,7 +60,20 @@ basket = {
         this.container.innerHTML = str;
     },
 
+    _getStorage() {
+        this.storage = window.localStorage;
+        let items = this.storage.getItem('basket');
+        if (!items) {
+            this._setStorage([]);
+            return;
+        }
+        console.log(items)
+        this.items = JSON.parse(items);
+    },
 
+    _setStorage(data) {
+        this.storage.setItem('basket', JSON.stringify(data));
+    },
 
     addItem(event) {
         if (event.target.dataset.cart === 'basket' || event.target.parentNode.dataset.cart === 'basket') {
@@ -76,6 +90,7 @@ basket = {
             }
             this._render()
             console.log(this.items);
+            this._setStorage(this.items);
         }
 
     },
@@ -92,6 +107,7 @@ basket = {
             return false;
         });
         this.items = res;
+        this._setStorage(this.items);
         this._render();
     }
 }

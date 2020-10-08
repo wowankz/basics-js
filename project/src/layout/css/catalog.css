@@ -1890,6 +1890,11 @@ input::-webkit-calendar-picker-indicator {
           box-shadow: 0 0 0.5rem #ffffff;
 }
 
+.wrap .main .catalog-products .card__button-add:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .wrap .main .catalog-products .card__cart-img {
   margin-right: 0.8rem;
 }

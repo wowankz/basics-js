@@ -140,6 +140,9 @@
   &__button-add:hover {
     box-shadow: 0 0 0.5rem #ffffff;
   }
+  &__button-add:active {
+    box-shadow: none;
+  }
   &__cart-img {
     margin-right: 0.8rem;
   }
