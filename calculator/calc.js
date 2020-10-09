@@ -18,7 +18,6 @@ const calc = {
         this._currentInput = document.querySelector(`output[name = "current"]`);
         this._historyInput = document.querySelector(`input[name = "history"]`);
         this._result = 0;
-        this._history = [];
         this._operand = '';
         this._prevOperand = '';
         this._lastAction = '';
@@ -121,8 +120,11 @@ const calc = {
             this._operand = '';
         } else {
             this._lastAction = action;
-            this._history.pop();
-            this._history.push(action)
+            if (this._history.length > 0) {
+                this._history.pop();
+                this._history.push(action)
+            }
+
         }
 
         this._renderInput();
