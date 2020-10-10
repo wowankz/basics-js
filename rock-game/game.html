@@ -12,11 +12,17 @@
 </head>
 
 <body>
-
+    <div class="modal">
+        <div class="settings">
+            <label for="sound-check">
+                Turn on the sound ?
+                <input type="checkbox" name="sound-check" id="set-sound">
+            </label>
+        </div>
+    </div>
     <div class="game center">
         <label class="sound-icon">
-            <input type="checkbox" name="sound" id="sound-fon" onchange="Rock.toggleFonSound()" hidden
-                autocomplete="on">
+            <input type="checkbox" name="sound" id="sound-fon" onchange="Rock.toggleFonSound()" hidden checked>
             <i class="fas fa-volume-mute"></i>
         </label>
 
