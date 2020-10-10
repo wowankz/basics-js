@@ -27,6 +27,12 @@
 						🌢
 					</button>
 
+					<button name="tool" class="toolButton btn btn-outline-secondary" data-tool='line' data-toggle="tooltip"
+						data-placement="bottom" title="Line">
+						<input type="radio" name="options" id="option1" autocomplete="off">
+						<i class="fas fa-slash"></i>
+					</button>
+
 					<button name="tool" class="toolButton btn btn-outline-secondary" data-tool='eraser'
 						data-toggle="tooltip" data-placement="bottom" title="Eraser">
 						<input type="radio" name="options" id="option1" autocomplete="off">
@@ -43,6 +49,24 @@
 						data-toggle="tooltip" data-placement="bottom" title="Square Fill">
 						<input type="radio" name="options" id="option1" autocomplete="off">
 						<i class="fas fa-square"></i>
+					</button>
+
+					<button name="tool" class="toolButton btn btn-outline-secondary" data-tool='circle' data-toggle="tooltip"
+						data-placement="bottom" title="Circle">
+						<input type="radio" name="options" id="option1" autocomplete="off">
+						<i class="far fa-circle"></i>
+					</button>
+					
+					<button name="tool" class="toolButton btn btn-outline-secondary" data-tool='text' data-toggle="tooltip"
+						data-placement="bottom" title="Text">
+						<input type="radio" name="options" id="option1" autocomplete="off">
+						<i class="fas fa-font"></i>
+					</button>
+					
+					<button name="tool" class="toolButton btn btn-outline-secondary" data-tool='circleFill' data-toggle="tooltip"
+						data-placement="bottom" title="Circle Fill">
+						<input type="radio" name="options" id="option1" autocomplete="off">
+						<i class="fas fa-circle"></i>
 					</button>
 
 					<button name="tool" class="toolButton btn btn-outline-secondary" data-tool='clearCnv'
@@ -71,7 +95,7 @@
 			</div>
 		</div>
 		<div class="canv">
-			<canvas id="canv" width="1000" height="600"></canvas>
+			<canvas id="canv" width="998" height="600"></canvas>
 		</div>
 		<div class="tools">
 			<div id="coordinates">
