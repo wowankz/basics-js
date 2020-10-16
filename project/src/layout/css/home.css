@@ -44,6 +44,11 @@ a {
   padding-left: calc((100% - 1140px) / 2);
 }
 
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .logo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -67,16 +72,6 @@ a {
   color: #f16d7f;
   font-weight: 900;
   letter-spacing: 0.068rem;
-}
-
-#basket {
-  max-height: 50vh;
-  overflow: hidden;
-}
-
-#basket:hover {
-  overflow-y: auto;
-  margin-right: -1.5rem;
 }
 
 .button {

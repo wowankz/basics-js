@@ -1,27 +1,27 @@
 function createProducts(url, container) {
   return {
-    items: null,
-    container: null,
+    _items: null,
+    _container: null,
 
     async init() {
-      this.container = container;
-      await this.getProducts(url);
-      this.render();
-      this._addEvent();
+      this._container = container;
+      await this._getProducts(url);
+      this._render();
+      console.log(`Container ${this._container.id}  init`);
     },
 
-    render() {
-      let content = "";
-      this.items.products.forEach((item) => {
+    _render() {
+      let content = '';
+      this._items.products.forEach((item) => {
         content += `<div class="card">
                       <div class="card__hover">
-                        <a id="${item.id}" onclick="return false" href="#" class="card__button-add" data-item='${JSON.stringify(item)}' data-cart="basket">
+                        <a  href="#" class="card__button-add" data-item='${JSON.stringify(item)}' data-button="addProduct">
                           <img   src="../src/assets/images/cart-white.png" alt="cart" class="card__cart-img">
                           Add to Cart
                         </a>
                       </div>
                       <a href="#" class="card__link">
-                        <img src="${this.items.baseImgUrl}${item.img}" alt="${item.name}" class="card__img">
+                        <img src="${this._items.baseImgUrl}${item.img}" alt="${item.name}" class="card__img">
                       </a>
                       <div class="card__content">
                         <a href="product.html">
@@ -40,31 +40,23 @@ function createProducts(url, container) {
                       </div>
                     </div> `;
       });
-      this.container.innerHTML = content;
+      this._container.innerHTML = content;
     },
 
-    _addEvent() {
-      this.container.addEventListener("click", basket.addItem.bind(basket), true);
-    },
-
-    async getProducts(url) {
+    async _getProducts(url) {
       let res = await fetch(url);
-      res.status ? (this.items = await res.json()) : (this.items = []);
-      console.log(this.items.products);
-    },
+      res.status ? (this._items = await res.json()) : (this._items = []);
+    }
   };
 }
-let Prod = null;
-let Cat = null;
-let Like = null;
 
-window.onload = () => {
-  let container = document.querySelector("#prod");
-  container ? ((Prod = createProducts("https://raw.githubusercontent.com/wowankz/static/master/shop/models/prod.json", container)), Prod.init()) : "";
 
-  container = document.querySelector("#cat");
-  container ? ((Cat = createProducts("https://raw.githubusercontent.com/wowankz/static/master/shop/models/cat.json", container)), Cat.init()) : "";
+let container = document.querySelector('#prod');
+container ? createProducts('https://raw.githubusercontent.com/wowankz/static/master/shop/models/prod.json', container).init() : '';
 
-  container = document.querySelector("#like");
-  container ? ((Like = createProducts("https://raw.githubusercontent.com/wowankz/static/master/shop/models/like.json", container)), Like.init()) : "";
-};
+container = document.querySelector('#cat');
+container ? createProducts('https://raw.githubusercontent.com/wowankz/static/master/shop/models/cat.json', container).init() : '';
+
+container = document.querySelector('#like');
+container ? createProducts('https://raw.githubusercontent.com/wowankz/static/master/shop/models/like.json', container).init() : '';
+
