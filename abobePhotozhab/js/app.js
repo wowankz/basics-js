@@ -91,7 +91,7 @@ toolsPanel.addEventListener('click', (e) => {
     }
 })
 
-canvas.addEventListener('mouseup', (e) => {
+document.addEventListener('mouseup', (e) => {
     if (instrument === 'pencil') {
         let position = getCursorPosition(e);
         ctx.lineTo(position.x, position.y);
